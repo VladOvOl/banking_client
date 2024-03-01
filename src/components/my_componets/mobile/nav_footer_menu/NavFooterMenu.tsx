@@ -1,10 +1,11 @@
 'use client'
-import { Nav } from '@/components/ui/nav'
+import { Nav } from '@/components/ui/nav_mobile'
 import {
     Home,
     Wallet2,
     ArrowLeftRight,
-    User
+    User,
+    Settings
   } from "lucide-react"
 import useDeviceSize from '@/hooks/useDeviceSize'
 
@@ -12,7 +13,7 @@ import useDeviceSize from '@/hooks/useDeviceSize'
 
 type Props = {}
 
-const NavSideBarMenu = (props: Props) => {
+const NavFooterMenu = (props: Props) => {
   
   
   const width = useDeviceSize()[0]
@@ -20,15 +21,8 @@ const NavSideBarMenu = (props: Props) => {
 
   return (
     <Nav
-      isCollapsed={width > 900 ? false : true}
           links={[
-            {
-              title: "Dashboard",
-              href:"/dashboard",
-              label: "1",
-              icon:  Home,
-              variant: "default",
-            },
+
             {
               title: "Cards",
               href:"/dashboard/cards",
@@ -44,6 +38,20 @@ const NavSideBarMenu = (props: Props) => {
               variant: "ghost",
             },
             {
+              title: "Dashboard",
+              href:"/dashboard",
+              label: "1",
+              icon:  Home,
+              variant: "default",
+            },
+            {
+              title: "Setting",
+              href:"/dashboard/settings",
+              label: "1",
+              icon:  Settings,
+              variant: "default",
+            },
+            {
               title: "Account",
               href:"/dashboard/account",
               label: "",
@@ -56,4 +64,4 @@ const NavSideBarMenu = (props: Props) => {
   )
 }
 
-export default NavSideBarMenu
+export default NavFooterMenu

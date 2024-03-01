@@ -12,19 +12,11 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { axiosWithOutAuth } from "@/api/interceptors"
 import { useRouter } from "next/navigation"
-import { AxiosError } from "axios"
 import { ToastAction } from "@/components/ui/toast"
-import { toast } from "@/components/ui/use-toast"
+import { useToast } from "@/components/ui/use-toast"
 import style from './FormAuth.module.scss'
 
  
@@ -33,45 +25,37 @@ export function FormAuth() {
   const router = useRouter()
   const[email, setEmail]=  React.useState('')
   const[password, setPassword]=React.useState('')
-
-
+  const { toast } = useToast()
   let data = {
     email: email,
     password: password
   }
-  
-  console.log(data)
 
   function show(message:string){
     toast({
       variant: "destructive",
       title: "Uh oh! Something went wrong.",
-      description: message,
+      description: "There was a problem with your request.",
       action: <ToastAction altText="Try again">Try again</ToastAction>,
     })
   }
 
   
-  async function name(data:any) {
+  async function LoginUser(data:any) {
 
     try {
       let result = await axiosWithOutAuth.post('auth/loginUser',data)
 
+      console.log(result.data)
       
     } catch (error:any) {
-      show(error)
       show(error.response.data.message[0])
       console.log(error.response.data.message[0])
     }
     
-    
-      router.replace('/dashboard')
-    
-    //console.log(result)
-      
-    
-  }
+    router.replace('/dashboard')
 
+  }
 
   return (
     <Card className={style.container}>
@@ -111,7 +95,7 @@ export function FormAuth() {
       <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
         <Button onClick={() => {
-          name(data)
+          LoginUser(data)
         }}>Deploy</Button>
       </CardFooter>
     </Card>

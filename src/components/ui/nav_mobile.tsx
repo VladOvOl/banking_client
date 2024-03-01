@@ -14,7 +14,6 @@ import {
 import { usePathname } from "next/navigation"
 
 interface NavProps {
-  isCollapsed: boolean
   links: {
     title: string
     href: string
@@ -24,16 +23,15 @@ interface NavProps {
   }[]
 }
 
-export function Nav({ links, isCollapsed }: NavProps) {
+export function Nav({ links}: NavProps) {
 
   let pathName = usePathname()
 
   return (
     <TooltipProvider>
      
-        <nav className="grid gap-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]">
+        <nav className="flex justify-between group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]">
           {links.map((link, index) =>
-            isCollapsed ? (
               <Tooltip key={index} delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Link
@@ -41,7 +39,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                     className={cn(
                       buttonVariants({ variant: link.href === pathName ? 'default' : 'ghost', 
                       size: "icon" }),
-                      "h-9 w-9",
+                      "h-12 w-12",
                       link.variant === "default" &&
                         "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
                     )}
@@ -59,33 +57,8 @@ export function Nav({ links, isCollapsed }: NavProps) {
                   )}
                 </TooltipContent>
               </Tooltip>
-            ) : (
-              <Link
-                key={index}
-                href={link.href}
-                className={cn(
-                  buttonVariants({ variant: link.href === pathName ? 'default' : 'ghost', }),
-                  link.variant === "default" &&
-                    "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
-                  "justify-start gap-2 w-[250px]"
-                )}
-              >
-                <link.icon className="mr-2 h-5 w-5" />
-                {link.title}
-                {link.label && (
-                  <span
-                    className={cn(
-                      "ml-auto",
-                      link.variant === "default" &&
-                        "text-background dark:text-white"
-                    )}
-                  >
-                    {link.label}
-                  </span>
-                )}
-              </Link>
             )
-          )}
+          }
         </nav>
      
     </TooltipProvider>

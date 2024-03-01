@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import style from './page.module.scss'
+import style from './layout.module.scss'
 import SideBar from "@/components/my_componets/desktop/side_bar/SideBar";
+import { Separator } from "@/components/ui/separator";
+import NavFooterMenu from "@/components/my_componets/mobile/nav_footer_menu/NavFooterMenu";
 
 
 
@@ -19,11 +21,10 @@ export default function RootLayout({
       <aside className={style.sideBar}>
         <SideBar/>
       </aside>
-        <div className={style.container}>
-          {children}
-        </div>
+      <Separator className={style.separator}  orientation="vertical"/>
+        {children}
       <footer className={style.footer}>
-        footer
+        <NavFooterMenu />
       </footer>
     </section>
   );
