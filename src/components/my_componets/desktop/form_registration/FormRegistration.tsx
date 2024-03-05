@@ -69,7 +69,7 @@ export function FormRegistration() {
 
   return (
     <Card >
-      <button onClick={async()=>console.log(await axios.get('https://test-vercel-eight-peach.vercel.app/'))}>Click</button>
+      <button onClick={async()=>(await axios.get('https://test-vercel-eight-peach.vercel.app/'))}>Click</button>
       <CardHeader>
         <CardTitle>Create account</CardTitle>
         <CardDescription>Enter all string to create account</CardDescription>
