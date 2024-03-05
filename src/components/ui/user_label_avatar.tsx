@@ -5,8 +5,13 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 import useDeviceSize from "@/hooks/useDeviceSize"
+import { useUserStore } from "@/store/user.store"
 
 export function UserLabelAvatar() {
+
+  const {emailStore} = useUserStore()
+
+  console.log(emailStore)
 
   const width = useDeviceSize()[0]
 
@@ -33,7 +38,7 @@ export function UserLabelAvatar() {
         <div className="ml-4 space-y-1">
           <p className="text-sm font-medium leading-none">Olivia Martin</p>
           <p className="text-sm text-muted-foreground">
-            olivia.martin@email.com
+            {emailStore}
           </p>
         </div>
       </div>

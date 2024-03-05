@@ -3,9 +3,9 @@ import React from 'react'
 
 type Props = {}
 
-const error = (props: Props) => {
+const error = (error:{error:Error}) => {
   return (
-    <div>error</div>
+    <div><p>error</p></div>
   )
 }
 

@@ -1,9 +1,12 @@
+import { useUserStore } from '@/store/user.store'
 import style from './SideBarLogo.module.scss'
 import Image from 'next/image'
 
 type Props = {}
 
 const SideBarLogo = (props: Props) => {
+
+ 
 
   return (
     <div className={style.container}>

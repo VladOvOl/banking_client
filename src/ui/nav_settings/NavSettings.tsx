@@ -1,5 +1,6 @@
 'use client'
 import { Nav } from '@/components/ui/nav'
+import { NavCollapsed } from '@/components/ui/nav_collapsed'
 import useDeviceSize from '@/hooks/useDeviceSize'
 import { Settings } from 'lucide-react'
 import React from 'react'
@@ -12,18 +13,34 @@ const NavSettings = (props: Props) => {
   
 
     return (
-      <Nav
-        isCollapsed={width > 900 ? false : true}
-            links={[
-              {
-                title: "Settings",
-                href:"/dashboard/settings",
-                label: "",
-                icon:  Settings,
-                variant: "ghost",
-              }
-            ]}
-        />   
+      <>
+        {width > 900 ? 
+        <Nav
+        
+        links={[
+          {
+            title: "Settings",
+            href:"/dashboard/settings",
+            label: "",
+            icon:  Settings,
+            variant: "ghost",
+          }
+        ]}
+    />   : 
+    <NavCollapsed
+        
+    links={[
+      {
+        title: "Settings",
+        href:"/dashboard/settings",
+        label: "",
+        icon:  Settings,
+        variant: "ghost",
+      }
+    ]}
+/>}
+      </>
+       
   )
 }
 

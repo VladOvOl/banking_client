@@ -82,6 +82,14 @@ body{
   height: 100vh;
   background-color: black;
   padding: 15px;
+
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
 }
 
 main{
@@ -91,3 +99,4 @@ main{
   padding: 15px;
   border-radius: 15px;
 }
+

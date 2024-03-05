@@ -1,6 +1,5 @@
 'use client'
 import * as React from "react"
- 
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -13,52 +12,49 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { axiosWithOutAuth } from "@/api/interceptors"
 import { useRouter } from "next/navigation"
 import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
-import style from './FormAuth.module.scss'
+import { authService } from "@/services/auth/auth.service"
+import { useUserStore } from "@/store/user.store"
+
 
  
-export function FormAuth() {
+export function FormLogin() {
 
   const router = useRouter()
   const[email, setEmail]=  React.useState('')
   const[password, setPassword]=React.useState('')
   const { toast } = useToast()
+
+  const {emailStore,setEmailStore} = useUserStore()
+
   let data = {
     email: email,
     password: password
   }
-
-  function show(message:string){
-    toast({
-      variant: "destructive",
-      title: "Uh oh! Something went wrong.",
-      description: "There was a problem with your request.",
-      action: <ToastAction altText="Try again">Try again</ToastAction>,
-    })
-  }
-
   
-  async function LoginUser(data:any) {
-
+  async function loginUser(data:any) {
+    
     try {
-      let result = await axiosWithOutAuth.post('auth/loginUser',data)
 
-      console.log(result.data)
-      
+      await authService.loginUser(data)
+
     } catch (error:any) {
-      show(error.response.data.message[0])
-      console.log(error.response.data.message[0])
+      toast({
+        variant: "destructive",
+        title: "Something went wrong with login....",
+        description: `${error.response.data.message[0]}`,
+      })
     }
     
+    setEmailStore(email)
     router.replace('/dashboard')
 
   }
 
   return (
-    <Card className={style.container}>
+    <Card >
       <CardHeader>
         <CardTitle>Create project</CardTitle>
         <CardDescription>Deploy your new project in one-click.</CardDescription>
@@ -95,7 +91,7 @@ export function FormAuth() {
       <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
         <Button onClick={() => {
-          LoginUser(data)
+          loginUser(data)
         }}>Deploy</Button>
       </CardFooter>
     </Card>

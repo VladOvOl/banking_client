@@ -4,8 +4,18 @@ import {IAuthRequest,IAuthResponse} from '@/types/auth.types.ts'
 
 export const authService = {
 
-    async main(type: 'loginUser' | 'registrationUser', data: IAuthRequest){
-      const response = await axiosWithOutAuth.post<IAuthResponse>(`/auth/${type}`,
+    async loginUser(data: IAuthRequest){
+      const response = await axiosWithOutAuth.post<IAuthResponse>(`/auth/loginUser`,
+      data
+      )
+      if(response.data.accessToken){
+        saveTokenStorage(response.data.accessToken)
+      }
+      return response
+    },
+
+    async registrationUser(data: IAuthRequest){
+      const response = await axiosWithOutAuth.post<IAuthResponse>(`/auth/registrationUser`,
       data
       )
       if(response.data.accessToken){

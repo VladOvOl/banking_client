@@ -14,7 +14,6 @@ import {
 import { usePathname } from "next/navigation"
 
 interface NavProps {
-  isCollapsed: boolean
   links: {
     title: string
     href: string
@@ -24,7 +23,9 @@ interface NavProps {
   }[]
 }
 
-export function Nav({ links, isCollapsed }: NavProps) {
+
+
+export function Nav({ links}: NavProps) {
 
   let pathName = usePathname()
 
@@ -33,33 +34,6 @@ export function Nav({ links, isCollapsed }: NavProps) {
      
         <nav className="grid gap-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]">
           {links.map((link, index) =>
-            isCollapsed ? (
-              <Tooltip key={index} delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      buttonVariants({ variant: link.href === pathName ? 'default' : 'ghost', 
-                      size: "icon" }),
-                      "h-9 w-9",
-                      link.variant === "default" &&
-                        "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                    )}
-                  >
-                    <link.icon className="h-5 w-5" />
-                    <span className="sr-only">{link.title}</span>
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent side="right" className="flex items-center gap-4">
-                  {link.title}
-                  {link.label && (
-                    <span className="ml-auto text-muted-foreground">
-                      {link.label}
-                    </span>
-                  )}
-                </TooltipContent>
-              </Tooltip>
-            ) : (
               <Link
                 key={index}
                 href={link.href}
@@ -84,7 +58,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                   </span>
                 )}
               </Link>
-            )
+            
           )}
         </nav>
      
