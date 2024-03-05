@@ -18,6 +18,7 @@ import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
 import style from './FormRegistration.module.scss'
 import { authService } from "@/services/auth/auth.service"
+import axios from "axios"
 
 
  
@@ -64,10 +65,11 @@ export function FormRegistration() {
     }
     
   }
-
+  
 
   return (
     <Card >
+      <button onClick={async()=>console.log(await axios.get('https://test-vercel-eight-peach.vercel.app/'))}>Click</button>
       <CardHeader>
         <CardTitle>Create account</CardTitle>
         <CardDescription>Enter all string to create account</CardDescription>
@@ -77,11 +79,11 @@ export function FormRegistration() {
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Full Name</Label>
-              <Input id="name" type='email' placeholder="Enter your full name" value={email} onChange={e=>setEmail(e.target.value)}/>
+              <Input id="name" type='text' placeholder="Enter your full name" value={name} onChange={e=>setName(e.target.value)}/>
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type='email' placeholder="Enter your email" value={name} onChange={e=>setName(e.target.value)}/>
+              <Input id="email" type='email' placeholder="Enter your email" value={email} onChange={e=>setEmail(e.target.value)}/>
             </div>
             
             <div className="flex flex-col space-y-1.5">
