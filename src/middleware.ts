@@ -23,6 +23,10 @@ export async function middleware(request:NextRequest, response:NextResponse) {
         return NextResponse.redirect(new URL('/auth',request.url))
     }
 
+    if(isDashboardPage && !refreshToken){
+        return NextResponse.redirect(new URL('/auth',request.url))
+    }
+
     return NextResponse.next()
 
 }

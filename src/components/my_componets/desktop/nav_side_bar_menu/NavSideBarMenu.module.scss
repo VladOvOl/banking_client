@@ -1,0 +1,17 @@
+.containerNonCollapsed{
+    display: block;
+   
+
+    @media (max-width:900px) {
+        display: none;
+    }
+}
+
+.containerCollapsed{
+    display: none;
+   
+
+    @media (max-width:900px) {
+        display: block;
+    }
+}

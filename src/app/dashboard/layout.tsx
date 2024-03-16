@@ -22,7 +22,9 @@ export default function RootLayout({
         <SideBar/>
       </aside>
       <Separator className={style.separator}  orientation="vertical"/>
+      <div className={style.containerMain}>
         {children}
+      </div>
       <footer className={style.footer}>
         <NavFooterMenu />
       </footer>

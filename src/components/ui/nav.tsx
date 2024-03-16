@@ -19,6 +19,7 @@ interface NavProps {
     href: string
     label?: string
     icon: LucideIcon
+    action?:()=>void
     variant: "default" | "ghost"
   }[]
 }
@@ -37,6 +38,7 @@ export function Nav({ links}: NavProps) {
               <Link
                 key={index}
                 href={link.href}
+                onClick={link.action}
                 className={cn(
                   buttonVariants({ variant: link.href === pathName ? 'default' : 'ghost', }),
                   link.variant === "default" &&

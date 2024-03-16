@@ -1,46 +1,76 @@
 'use client'
 import { Nav } from '@/components/ui/nav'
 import { NavCollapsed } from '@/components/ui/nav_collapsed'
-import useDeviceSize from '@/hooks/useDeviceSize'
-import { Settings } from 'lucide-react'
-import React from 'react'
+import { LogOut, Settings } from 'lucide-react'
+import style from './NavSettings.module.scss'
+import { authService } from '@/services/auth/auth.service'
+import { MyAlertDialog } from '../../components/my_componets/desktop/dialogs/alert_dialog/MyAlertDialog'
+import { useCloseAppDialogStore } from '@/store/dialog.store'
+
+
+
 
 type Props = {}
 
 const NavSettings = (props: Props) => {
    
-    const width = useDeviceSize()[0]
-  
+    const {setIsOpenState} = useCloseAppDialogStore()
 
     return (
       <>
-        {width > 900 ? 
-        <Nav
+
+        <div className={style.containerNonCollapsed}>
+          <Nav
+            links={[
+              {
+                title: "Settings",
+                href:"/dashboard/settings",
+                label: "",
+                icon:  Settings,
+                variant: "ghost",
+                
+              },
+              {
+                title: "LogOut",
+                href:"#",
+                label: "",
+                icon:  LogOut,
+                variant: "ghost",
+                action:()=>{
+                 setIsOpenState(true)
+                  
+                }
+                
+              }
+            ]}
+          />
+        </div>
+           
+        <div className={style.containerCollapsed}>
+          <NavCollapsed 
+            links={[
+              {
+                title: "Settings",
+                href:"/dashboard/settings",
+                label: "",
+                icon:  Settings,
+                variant: "ghost",
+              },
+              {
+                title: "LogOut",
+                href:"#",
+                label: "",
+                icon:  LogOut,
+                variant: "ghost",
+                action:()=>{
+                  setIsOpenState(true)
+                }
+              }
+            ]}
+          />
+        </div>
         
-        links={[
-          {
-            title: "Settings",
-            href:"/dashboard/settings",
-            label: "",
-            icon:  Settings,
-            variant: "ghost",
-          }
-        ]}
-    />   : 
-    <NavCollapsed
-        
-    links={[
-      {
-        title: "Settings",
-        href:"/dashboard/settings",
-        label: "",
-        icon:  Settings,
-        variant: "ghost",
-      }
-    ]}
-/>}
-      </>
-       
+      </>       
   )
 }
 

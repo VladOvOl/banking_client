@@ -19,6 +19,7 @@ interface NavProps {
     href: string
     label?: string
     icon: LucideIcon
+    action?:()=>void
     variant: "default" | "ghost"
   }[]
 }
@@ -38,6 +39,7 @@ export function NavCollapsed({ links}: NavProps) {
                 <TooltipTrigger asChild>
                   <Link
                     href={link.href}
+                    onClick={link.action}
                     className={cn(
                       buttonVariants({ variant: link.href === pathName ? 'default' : 'ghost', 
                       size: "icon" }),

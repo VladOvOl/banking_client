@@ -1,6 +1,7 @@
-import { axiosWithOutAuth } from "@/api/interceptors"
+import { axiosWithAuth, axiosWithOutAuth } from "@/api/interceptors"
 import { removeFromStorage, saveTokenStorage } from "./auth_token.service"
 import {IAuthRequest,IAuthResponse} from '@/types/auth.types.ts'
+import {IUser} from '@/types/user.types.ts'
 
 export const authService = {
 
@@ -21,6 +22,13 @@ export const authService = {
       if(response.data.accessToken){
         saveTokenStorage(response.data.accessToken)
       }
+      return response
+    },
+
+    async updateUser(data: IUser){
+      const response = await axiosWithAuth.post<IAuthResponse>(`/auth/updateUser`,
+      data
+      )
       return response
     },
 

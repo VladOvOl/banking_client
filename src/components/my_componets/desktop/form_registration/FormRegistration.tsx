@@ -12,13 +12,13 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { axiosWithOutAuth } from "@/api/interceptors"
 import { useRouter } from "next/navigation"
 import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
-import style from './FormRegistration.module.scss'
 import { authService } from "@/services/auth/auth.service"
-import axios from "axios"
+import { IUser } from "@/types/user.types"
+import { useLoadingStore } from "@/store/loading.store"
+import { useUserStore } from "@/store/user.store"
 
 
  
@@ -26,6 +26,9 @@ export function FormRegistration() {
 
   const router = useRouter()
   const { toast } = useToast()
+  const {isLoading,setLoadingState} = useLoadingStore()
+  const {setUserStore} = useUserStore()
+
 
   const[email, setEmail]=  useState('')
   const[name, setName]=  useState('')
@@ -33,33 +36,38 @@ export function FormRegistration() {
   const[repeatPassword, setRepeatPassword]=useState('')
   const [showPassword, setShowPassword] = useState(false)
   
+
   let User = {
     email: email,
+    name:name,
     password: password
   }
+
+  console.log(User)
 
   function showErrorNotification(message:string){
     toast({
       variant: "destructive",
       title: "Uh oh! Something went wrong.",
       description: `${message}`,
-      action: <ToastAction altText="Try again">Try again</ToastAction>,
     })
   }
   
-  async function registrationUser(data:any) {
+  async function registrationUser(data:IUser) {
     if(password === repeatPassword){
       try {
+        setLoadingState(true)
         const result = await authService.registrationUser(data)
-        if(!result){
-          console.log('Not result on ForM REGISTRATION')
-        }
+        setUserStore(result.data.user)
+        router.replace('/dashboard')
+        
+
       } catch (error:any) {
         showErrorNotification(error.response.data.message)
-        //console.log(error.response.data.message)
+      }finally{
+        setLoadingState(false)
       }
       
-      router.replace('/dashboard')
     }else{
       showErrorNotification("Password must be equals")
     }
@@ -69,7 +77,6 @@ export function FormRegistration() {
 
   return (
     <Card >
-      <button onClick={async()=>(await axios.get('https://test-vercel-eight-peach.vercel.app/'))}>Click</button>
       <CardHeader>
         <CardTitle>Create account</CardTitle>
         <CardDescription>Enter all string to create account</CardDescription>
@@ -94,8 +101,7 @@ export function FormRegistration() {
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="repeatPassword">Repeat Password</Label>
               <Input id="repeatPassword" type={showPassword ? 'text' : 'password'} placeholder="Enter your password" value={repeatPassword} onChange={e=>setRepeatPassword(e.target.value)}/>
-            </div>
-
+            
               <div className="items-top flex space-x-2">
                 <Checkbox id="terms1" onClick={() => setShowPassword(!showPassword)}/>
                   <div className="grid gap-1.5 leading-none">
@@ -107,14 +113,17 @@ export function FormRegistration() {
                     </label>
                   </div>
                 </div>
+              </div>
           </div>
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button onClick={() => {
-          registrationUser(User)
-        }}>Deploy</Button>
+        <Button  variant="outline">Clear form</Button>
+        <Button 
+          disabled={isLoading}
+          onClick={() => {registrationUser(User)}}>
+          Registration
+        </Button>
       </CardFooter>
     </Card>
   )

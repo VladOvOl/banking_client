@@ -11,7 +11,7 @@ const AuthPage:NextPage = (props: Props) => {
     <div className={style.container}>
       <Tabs defaultValue="login" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="login">Enter your cabinet</TabsTrigger>
+        <TabsTrigger value="login">Login</TabsTrigger>
         <TabsTrigger value="password">Registration</TabsTrigger>
       </TabsList>
       <TabsContent value="login">

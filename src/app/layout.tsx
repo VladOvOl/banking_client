@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster as Sonner} from "@/components/ui/sonner";
 import { Toaster as Toaster} from "@/components/ui/toaster"
+import Loading from "@/components/my_componets/desktop/loading/Loading";
+import { MyAlertDialog } from "@/components/my_componets/desktop/dialogs/alert_dialog/MyAlertDialog";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{padding:15}}>
         <main>
           {children}
         </main>
         <Sonner />
         <Toaster />
+        <Loading/>
+        <MyAlertDialog/>
       </body>
     </html>
   );
