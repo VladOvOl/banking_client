@@ -1,0 +1,35 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    //background-color: aquamarine;
+}
+
+.containerLeft{
+    height: 100%;
+    padding: 1.5rem 60px 1.5rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    //background-color: rgb(152, 212, 192);
+    border: 1.5px solid #E5E7EB;
+    border-radius: 15px;
+    
+}
+
+.containerRight{
+    height: 100%;
+    width: 50%;
+    //background-color: rgb(255, 65, 65);
+}
+
+
+
+.containerListNone{
+    height: 100%;
+    padding: 1.5rem  1.5rem;
+    width: 100%;
+    //background-color: aqua;
+}

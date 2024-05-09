@@ -1,11 +1,26 @@
 .container{
+    height: 100%;
 
-    .containerForm{
-        width: fit-content;
+
+    .containerTop{
+        height: 10%;
+        //background-color: aqua;
+        display: flex;
+        align-items: center;
+
+        h1{
+            font-size: 25px;
+        }
     }
 
-    h1{
-        font-size: 30px;
-        font-weight: 600;
+    .containerData{
+        height: 90%;
+        overflow-y: scroll;
     }
+
+    .containerScroll{
+        height: fit-content;
+        
+    }
+   
 }

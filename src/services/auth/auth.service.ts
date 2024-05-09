@@ -1,11 +1,11 @@
 import { axiosWithAuth, axiosWithOutAuth } from "@/api/interceptors"
 import { removeFromStorage, saveTokenStorage } from "./auth_token.service"
-import {IAuthRequest,IAuthResponse} from '@/types/auth.types.ts'
+import {IRegistrationRequest, ILoginRequest, IAuthResponse} from '@/types/auth.types.ts'
 import {IUser} from '@/types/user.types.ts'
 
 export const authService = {
 
-    async loginUser(data: IAuthRequest){
+    async loginUser(data: ILoginRequest){
       const response = await axiosWithOutAuth.post<IAuthResponse>(`/auth/loginUser`,
       data
       )
@@ -15,7 +15,7 @@ export const authService = {
       return response
     },
 
-    async registrationUser(data: IAuthRequest){
+    async registrationUser(data: IRegistrationRequest){
       const response = await axiosWithOutAuth.post<IAuthResponse>(`/auth/registrationUser`,
       data
       )

@@ -1,0 +1,43 @@
+.container{
+    //background-color: aqua;
+    width: 100%;
+    height: fit-content;
+    padding:1.5rem; 
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 15px;
+
+}
+
+.containerTransfer{
+    display: flex;
+    gap: 50px;
+}
+
+.containerFooter{
+    display: flex;
+    padding: 0 25px;
+    justify-content: space-between;
+}
+
+.containerSender{
+    width: 50%;
+    height: 80%;
+    //background-color: rgb(177, 223, 208);
+    
+    .titleContainer{
+        font-size: 25px;
+    }
+}
+
+.containerRecipient{
+    width: 50%;
+    height: 80%;
+    //background-color: rgb(214, 219, 217);
+
+    .titleContainer{
+        font-size: 25px;
+    }
+}

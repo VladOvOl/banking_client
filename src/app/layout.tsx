@@ -4,7 +4,9 @@ import "./globals.css";
 import { Toaster as Sonner} from "@/components/ui/sonner";
 import { Toaster as Toaster} from "@/components/ui/toaster"
 import Loading from "@/components/my_componets/desktop/loading/Loading";
-import { MyAlertDialog } from "@/components/my_componets/desktop/dialogs/alert_dialog/MyAlertDialog";
+import { DialogLogOut } from "@/components/my_componets/desktop/dialogs/dialog_logout/DialogLogOut";
+import Providers from "./providers";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,17 +20,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  console.log('1p')
+
   return (
-    <html lang="en">
-      <body className={inter.className} style={{padding:15}}>
-        <main>
-          {children}
-        </main>
-        <Sonner />
-        <Toaster />
-        <Loading/>
-        <MyAlertDialog/>
-      </body>
-    </html>
+      <html lang="en">
+
+          <body className={inter.className} style={{padding:15}}>
+            <main>
+              <Providers>
+                {children}
+              </Providers>
+            </main>
+            <Sonner />
+            <Toaster />
+            <Loading/>
+            <DialogLogOut/>
+          </body>
+      </html>
   );
 }

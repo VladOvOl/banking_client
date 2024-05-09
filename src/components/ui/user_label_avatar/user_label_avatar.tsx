@@ -9,11 +9,11 @@ import style from './user_label_avatar.module.scss'
 import { userService } from "@/services/user/user.service"
 
 
-export function UserLabelAvatar() {
+export const UserLabelAvatar =() =>  {
 
   const {userStore} = useUserStore()
 
-  const name = userService.getFirstLetter(userStore.name)
+  const name = userService.getFirstLetter(userStore.userFullName)
   
     return (
       <>
@@ -36,9 +36,9 @@ export function UserLabelAvatar() {
                 <AvatarFallback>{name.toUpperCase()}</AvatarFallback>
               </Avatar>
               <div className="ml-4 space-y-1">
-                <p className="text-sm font-medium leading-none">{userStore.name}</p>
+                <p className="text-sm font-medium leading-none">{userStore.userFullName}</p>
                 <p className="text-sm text-muted-foreground">
-                  {userStore.email}
+                  {userStore.userEmail}
                 </p>
               </div>
             </div>
@@ -47,3 +47,4 @@ export function UserLabelAvatar() {
       </>
     )
 }
+

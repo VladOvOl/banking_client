@@ -1,24 +1,42 @@
 import { userService } from '@/services/user/user.service'
 import { IUser } from '@/types/user.types'
 import {create} from 'zustand'
-import {persist,devtools} from 'zustand/middleware'
+import {persist,devtools, createJSONStorage} from 'zustand/middleware'
 
 interface IUserStore{
-    userStore: Omit<IUser,'password'>,
-    setUserStore: (user:IUser) => void
-    //getUserStore: (email:string) => void
+  userStore: Omit<IUser,"userPassword">,
+  setUserStore: (user:IUser) => void,
+  _hasHydrated:boolean,
+  setHasHydrated: (boll:boolean) => void
+    
 }
 
-export const useUserStore = create<IUserStore>()(persist(devtools((set)=>({
-    userStore: {
-        id:0,
-        name:'',
-        email:'',
-        
-    },
-    setUserStore: (user)=> set(()=> ({userStore: {
-        id:user.id,
-        name:user.name,
-        email:user.email
-    }}))
-})),{name:"user.store"}))
+export const useUserStore = create<IUserStore>()(persist(devtools((set,get)=>({
+  userStore: {
+    id:0,
+    userFullName:'', 
+    userEmail:'',
+    userPhoneNumber:'', 
+    userAddress:'' 
+      
+  },
+  setUserStore:(user)=> set(()=> ({userStore: {
+    id:user.id,
+    userFullName:user.userFullName,
+    userEmail:user.userEmail,
+    userPhoneNumber:user.userPhoneNumber,
+    userAddress:user.userAddress
+  }})),
+
+  _hasHydrated: false,
+
+  setHasHydrated: (boll) => {
+    set({
+      _hasHydrated: boll
+  })}
+
+  }))
+  ,{name:"user.store",
+  
+  
+})) 

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import {devtools} from 'zustand/middleware'
+import {devtools, persist} from 'zustand/middleware'
 
 interface IDialog{
     isOpen:boolean,
@@ -10,8 +10,10 @@ interface IResetPasswordDialog{
     isOpen:boolean,
     newPassword:string,
     setIsOpenState: (state:boolean) => void,
-    setNewPassword: (state:string) => void
+    setNewPassword: (state2:string) => void
 }
+
+
 
 export const useCloseAppDialogStore = create<IDialog>()(devtools((set)=>({
     isOpen:false,
@@ -24,6 +26,18 @@ export const useResetPasswordDialogStore = create<IResetPasswordDialog>()(devtoo
     isOpen:false,
     newPassword:'',
     setIsOpenState: (state) => set({isOpen:state}),
-    setNewPassword: (state) => set({newPassword:state})
+    setNewPassword: (state2) => {set({newPassword:state2})}
     
+})))
+
+export const useTransferDialogStore = create<IDialog>()(devtools((set)=>({
+    isOpen:false,
+    setIsOpenState: (state) => set({isOpen:state})
+
+})))
+
+export const useCardBlockDialogStore = create<IDialog>()(devtools((set)=>({
+    isOpen:false,
+    setIsOpenState: (state) => set({isOpen:state})
+
 })))

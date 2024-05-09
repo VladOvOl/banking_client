@@ -1,0 +1,19 @@
+.container{
+    width: 100%;
+    height: fit-content;
+    padding: 1.5rem  1.5rem;
+    display: flex;
+    flex-direction: column;
+    //background-color: bisque;
+}
+
+.containerScroll{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 15px;
+}
+
+

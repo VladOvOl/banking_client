@@ -1,0 +1,20 @@
+.container{
+    height: 100%;
+
+
+    .containerTop{
+        height: 10%;
+        //background-color: aqua;
+        display: flex;
+        align-items: center;
+    
+        h1{
+            font-size: 25px;
+        }
+    }
+
+    .containerData{
+        height: 90%;
+        //background-color: bisque;
+    }
+}

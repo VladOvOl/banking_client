@@ -1,8 +1,8 @@
-import { FormLogin } from '@/components/my_componets/desktop/form_login/FormLogin'
+import { FormLogin } from '@/components/my_componets/desktop/forms/form_login/FormLogin'
 import { NextPage } from 'next'
 import style from './page.module.scss'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { FormRegistration } from '@/components/my_componets/desktop/form_registration/FormRegistration'
+import { FormRegistration } from '@/components/my_componets/desktop/forms/form_registration/FormRegistration'
 
 type Props = {}
 
