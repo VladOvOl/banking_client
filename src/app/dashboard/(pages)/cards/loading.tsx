@@ -1,5 +1,5 @@
 import React from 'react'
-import "./globals.css";
+import "../../../globals.css";
 import Image from 'next/image';
 
 type Props = {}
@@ -14,6 +14,7 @@ const loading = (props: Props) => {
             alt="Loading"
           />
         </div>
+    
   )
 }
 

@@ -35,8 +35,4 @@ export const useUserStore = create<IUserStore>()(persist(devtools((set,get)=>({
       _hasHydrated: boll
   })}
 
-  }))
-  ,{name:"user.store",
-  
-  
-})) 
+  })),{name:'user.store'}))

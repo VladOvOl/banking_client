@@ -1,10 +1,13 @@
-import { ICreateTransaction } from "@/types/transaction.types";
+import { ICreateTransaction, ITransaction } from "@/types/transaction.types";
 import { create } from "zustand";
 
 interface ITransactionStore{
     currentTransactionForm:ICreateTransaction,
+    allTransactionByUser: ITransaction[],
     setCurrentTransactionForm:(dto:ICreateTransaction)=>void,
+    setAllTransactionByUser:(dto:ITransaction[])=>void,
     setEmpty:()=>void
+    
 } 
 
 export const useTransactionStore = create<ITransactionStore>()((set)=>({
@@ -16,6 +19,13 @@ export const useTransactionStore = create<ITransactionStore>()((set)=>({
         userSenderCardCVC:'',
         value: 0
     },
+
+    allTransactionByUser:[],
+
+    setAllTransactionByUser:(dto)=>set(()=>({
+        allTransactionByUser:dto
+    })),
+
     setEmpty:()=>set(()=>({
         currentTransactionForm:{
             userSenderCardNumber: '',
@@ -38,3 +48,5 @@ export const useTransactionStore = create<ITransactionStore>()((set)=>({
         }
     }))
     }))
+
+    

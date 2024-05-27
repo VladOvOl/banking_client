@@ -1,3 +1,5 @@
+import { ITransaction } from "@/types/transaction.types";
+
 export const dateAndTimeService = {
 
      extractDateAndTime(isoDateTime: string): { date: string, time: string } | null {
@@ -10,5 +12,5 @@ export const dateAndTimeService = {
             return null;
         }
     }
-    
+     
 }

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import TransferSenderFormCard from '../transfer_sender_form_card/TransferSenderFormCard'
 import { useTransactionStore } from '@/store/transaction.store'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { transactionService } from '@/services/transaction/transaction.service'
 import { useLoadingStore } from '@/store/loading.store'
 import { useToast } from '@/components/ui/use-toast'
@@ -17,6 +17,7 @@ type Props = {}
 
 function TransferContainer({}: Props) {
 
+  const queryClient = useQueryClient()
   const {toast} = useToast()
   const {currentTransactionForm,setEmpty} = useTransactionStore()
   const {setLoadingState} = useLoadingStore()
@@ -35,6 +36,7 @@ function TransferContainer({}: Props) {
         title: "Success",
         description: `Everything was correct`,
       })
+      queryClient.invalidateQueries({queryKey:['transactionDashboard']})
     },
     onError:(error:any)=>{
       toast({

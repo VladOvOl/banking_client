@@ -7,5 +7,6 @@ export interface ICard{
     cardDateYear: number,
     cardBalance: number,
     cardCVC: string,
-    cardStatus: boolean
+    cardStatus: boolean,
+    created_at:string
 }

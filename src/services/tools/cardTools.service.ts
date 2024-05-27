@@ -1,3 +1,5 @@
+import { ICard } from "@/types/card.types";
+
 export const cardToolService = {
 
     maskCreditCardNumber(cardNumber: string): string {
@@ -13,6 +15,15 @@ export const cardToolService = {
         const digitsOnly = cardNumber.replace(/\s/g, '');
         const formatted = digitsOnly.replace(/(\d{4})(?=\d)/g, '$1 ');
         return formatted;
+    },
+
+    sortArrayByDateDescending(arr: ICard[]): ICard[] {
+        return arr.sort((a, b) => {
+            const dateA = new Date(a.created_at);
+            const dateB = new Date(b.created_at);
+            return dateB.getTime() - dateA.getTime(); 
+        });
     }
+
 
 }

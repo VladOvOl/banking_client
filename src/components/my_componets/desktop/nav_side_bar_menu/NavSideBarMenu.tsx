@@ -4,7 +4,10 @@ import {
     Home,
     Wallet2,
     ArrowLeftRight,
-    User
+    User,
+    PieChartIcon,
+    BarChart4Icon,
+    CreditCard
   } from "lucide-react"
 import { NavCollapsed } from '@/components/ui/nav_collapsed'
 import style from './NavSideBarMenu.module.scss'
@@ -13,7 +16,11 @@ import { useEffect, useState } from 'react'
 import { ICard } from '@/types/card.types'
 import { cardService } from '@/services/card/card.service'
 import { useUserStore } from '@/store/user.store'
-import { useQuery } from '@tanstack/react-query'
+import { useQueries, useQuery } from '@tanstack/react-query'
+import { useGetAllCards } from '@/hooks/api/useGetAllCards'
+import { useTransactionStore } from '@/store/transaction.store'
+import { transactionService } from '@/services/transaction/transaction.service'
+import { userService } from '@/services/user/user.service'
 
 
 type Props = {}
@@ -23,38 +30,37 @@ type Props = {}
 const NavSideBarMenu = (props: Props) => {
 
   const {arrayCardStore,setArrayCardStore,reloadCard,setReloadCard} = useCardStore()
-  const {userStore} = useUserStore()
+  const {setAllTransactionByUser,allTransactionByUser} = useTransactionStore()
+  const {userStore,setUserStore} = useUserStore()
   const id = userStore.id
+  const arrayOfIds: string[] = arrayCardStore.map(obj => obj.id);
+  console.log("Nav")
+  console.log(arrayOfIds)
 
-  /*useEffect(()=>{
-    async function add(){
-      try {
-        if(userStore.id !== 0){
-          const response = await cardService.getAllCards({userId :id})
-          setArrayCardStore(response)
-        }
-      } catch (error) {
-        console.log(error)
-      }
-      finally{
 
-      }
-    }   
-    add()
-       
-  },[reloadCard])*/
-  
-  const {data} = useQuery({
-    queryKey: ['card'],
+  const allCards = useQuery({
+    queryKey: ['card',id],
     queryFn: async()=> {
-      id!=0 && 
       setArrayCardStore(await cardService.getAllCards({userId :id}))
       return "data"
     },
+    enabled:!!id,
     refetchInterval:60000
   })
 
-  //setArrayCardStore(data)
+  
+
+  const allTransaction = useQuery({
+    queryKey: ['transactionDashboard',allCards],
+    queryFn: async()=> {
+      setAllTransactionByUser(await transactionService.getAllByUser(arrayOfIds)) 
+      return "transaction"
+    },
+    enabled:!!allCards,
+    refetchInterval:60000
+  })
+  
+
 
   return (
   <>
@@ -72,6 +78,13 @@ const NavSideBarMenu = (props: Props) => {
           title: "Cards",
           href:"/dashboard/cards",
           label: `${arrayCardStore.length}`,
+          icon: CreditCard,
+          variant: "ghost",
+        },
+        {
+          title: "Payments",
+          href:"/dashboard/payments",
+          label: ``,
           icon: Wallet2,
           variant: "ghost",
         },
@@ -80,6 +93,13 @@ const NavSideBarMenu = (props: Props) => {
           href:"/dashboard/transfers",
           label: "",
           icon: ArrowLeftRight,
+          variant: "ghost",
+        },
+        {
+          title: "Statistics",
+          href:"/dashboard/statistics",
+          label: "",
+          icon: BarChart4Icon,
           variant: "ghost",
         },
         {
@@ -107,6 +127,13 @@ const NavSideBarMenu = (props: Props) => {
           title: "Cards",
           href:"/dashboard/cards",
           label: "9",
+          icon: CreditCard,
+          variant: "ghost",
+        },
+        {
+          title: "Payments",
+          href:"/dashboard/payments",
+          label: ``,
           icon: Wallet2,
           variant: "ghost",
         },
@@ -115,6 +142,13 @@ const NavSideBarMenu = (props: Props) => {
           href:"/dashboard/transfers",
           label: "",
           icon: ArrowLeftRight,
+          variant: "ghost",
+        },
+        {
+          title: "Statistics",
+          href:"/dashboard/statistics",
+          label: "",
+          icon: BarChart4Icon,
           variant: "ghost",
         },
         {

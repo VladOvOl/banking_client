@@ -6,8 +6,9 @@
     .containerTop{
         height: 10%;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        background-color: aqua;
+        //background-color: aqua;
 
         h1{
             font-size: 25px;
@@ -16,6 +17,6 @@
 
     .containerData{
         height: 90%;
-        background-color: rgb(5, 63, 63);
+        //background-color: rgb(5, 63, 63);
     }
 }

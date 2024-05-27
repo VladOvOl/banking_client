@@ -17,7 +17,6 @@ function BankingCard({card}:Props){
   const cardNumberMask = cardToolService.maskCreditCardNumber(card.cardNumber)
   const cardNumber = cardToolService.formatCreditCardNumber(card.cardNumber)
   const cardCVC = utilsService.decrypt(card.cardCVC,card.id)
-  console.log(card.cardStatus)
 
   return (
     <div className={style.container} 

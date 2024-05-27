@@ -21,14 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  console.log('1p')
-
   return (
       <html lang="en">
 
           <body className={inter.className} style={{padding:15}}>
             <main>
-              <Providers>
+              <Providers attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange>
                 {children}
               </Providers>
             </main>

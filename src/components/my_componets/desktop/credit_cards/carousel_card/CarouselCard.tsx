@@ -21,6 +21,8 @@ import DialogCardBlock from "../../dialogs/dialog_card_block/DialogCardBlock"
 import TransactionList from "../../transfers/transaction_list/TransactionList"
 import {useQueryClient } from "@tanstack/react-query"
 import { ICard } from "@/types/card.types"
+import { create } from "domain"
+import { cardToolService } from "@/services/tools/cardTools.service"
 
 const NOCardCarcas = {
   id: '0',
@@ -30,8 +32,9 @@ const NOCardCarcas = {
   cardDateMonth: 0,
   cardDateYear: 0,
   cardBalance : 0,
-  cardCVC:'000',
-  cardStatus:false
+  cardCVC: '000',
+  cardStatus: false,
+  created_at: "",
 }
  
 export function CarouselCard() {
@@ -47,7 +50,10 @@ export function CarouselCard() {
 
   const randomNumber = Math.floor(Math.random() * 100) + 1;
   let card:ICard = arrayCardStore[idCard]
+  const arrayCardSort = cardToolService.sortArrayByDateDescending(arrayCardStore)
 
+  console.log(arrayCardStore)
+  console.log(arrayCardSort)
 
   useEffect(() => {
     if (!api) {
@@ -72,8 +78,8 @@ export function CarouselCard() {
         >
           <CarouselContent>
             {
-              arrayCardStore.length!=0 
-              ? arrayCardStore.map((obj, index) => (
+              arrayCardSort.length!=0 
+              ? arrayCardSort.map((obj, index) => (
                 <CarouselItem key={index}>
                   <BankingCard card={obj}/>   
                 </CarouselItem>
@@ -84,7 +90,7 @@ export function CarouselCard() {
             } 
           </CarouselContent>  
           {
-            arrayCardStore.length!=0 &&
+            arrayCardSort.length!=0 &&
             <>
               <CarouselPrevious/>
               <CarouselNext/>
@@ -94,8 +100,8 @@ export function CarouselCard() {
 
         <div className="text-center text-sm text-muted-foreground">
           {
-            arrayCardStore.length!=0 
-            && `Slide ${current} of ${arrayCardStore.length}`
+            arrayCardSort.length!=0 
+            && `Slide ${current} of ${arrayCardSort.length}`
           }
         </div> 
 
@@ -133,7 +139,7 @@ export function CarouselCard() {
             ?
               <>
                 { 
-                arrayCardStore.length !== 0 
+                arrayCardSort.length !== 0 
                 ? api &&
                 <BankingCardInfo 
                   cardId={api.selectedScrollSnap()} 
@@ -162,7 +168,7 @@ export function CarouselCard() {
           }
         </div>
         {
-          arrayCardStore[idCard]&&
+          arrayCardSort[idCard]&&
           <>
             <DialogTransfer card={card}/>
             <DialogCardBlock card={card}/>

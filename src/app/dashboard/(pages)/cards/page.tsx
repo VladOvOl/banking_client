@@ -1,15 +1,13 @@
 'use client'
 import style from "./page.module.scss"
-import { CarouselCard } from '@/components/my_componets/desktop/cards/carousel_card/CarouselCard'
+import { CarouselCard } from '@/components/my_componets/desktop/credit_cards/carousel_card/CarouselCard'
 import { cardService } from '@/services/card/card.service'
 import { useCardStore } from '@/store/card.store'
 import { useUserStore } from '@/store/user.store'
-import BankingCard from '@/components/my_ui/banking_card/BankingCard'
 import React, { useEffect, useState } from 'react'
-import { FormAddCard } from '@/components/my_componets/desktop/forms/form_add_card/FormAddCard'
-import TransactionList from "@/components/my_componets/desktop/transfers/transaction_list/TransactionList"
 import * as CryptoJS from 'crypto-js';
 import { useQueryClient } from "@tanstack/react-query"
+
 
 type Props = {}
 
@@ -33,8 +31,8 @@ const CardsPage = (props: Props) => {
     try {
       await cardService.createCard(
         {cardTitle:"Raif Bank",
-        cardUserFullName:"Vlad Ovsianik2",
-        cardNumber: '0000000000000006',
+        cardUserFullName:"Vlad Ovsianik",
+        cardNumber: '0000000000000007',
         cardDateMonth: 12,
         cardDateYear: 24,
         cardBalance: 100,

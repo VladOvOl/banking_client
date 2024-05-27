@@ -1,0 +1,23 @@
+.container{
+    height: 150px;
+    padding: 0.5rem;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+
+    &:hover{
+        background-color: #F3F4F6;
+    }
+
+
+    p{
+        font-size: 18px;
+        text-align: center;
+    }
+}

@@ -1,22 +1,25 @@
 import React from 'react'
 import style from './page.module.scss'
-import { EnumTokens } from '@/services/auth/auth_token.service'
-import Cookies from 'js-cookie'
-import { Hash } from 'crypto'
+import Container from '@/components/my_componets/desktop/containers/dashboard_container/Container'
+import Dashboard from '@/components/my_componets/desktop/dashboard/dashboard/Dashboard'
+import DateTime from '@/components/my_componets/desktop/date_time/DateTime'
+
 
 
 type Props = {}
 
 
 const DashboardPage = async (props: Props) => {
-    
+  
+
   return (
     <div className={style.container}>
       <div className={style.containerTop}>
         <h1>Dashboard</h1>
+        <DateTime/>
       </div>
       <div className={style.containerData}>
-
+        <Dashboard/>
       </div>
     </div>
   )

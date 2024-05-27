@@ -1,0 +1,67 @@
+.container{
+    width: 100%;
+    height: 100%;
+    //background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerLeft{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //background-color: brown;
+
+    .containerChart{
+        height: 57%;
+        width: 100%;
+        //background-color: blue;
+    }
+    
+    .containerBottom{
+        height: 40%;
+        //background-color:rgb(0, 158, 82);
+    }
+}
+
+.containerRight{
+    width: 48%;
+    height: 100%;
+    //background-color: rgb(153, 116, 90);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .containerTop{
+        height: 57%;
+        width: 100%;
+        display: flex;
+
+    
+
+        .containerLeftTop{
+            width: 50%;
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .containerRightTop{
+            width: 50%;
+            background-color: rgb(129, 173, 173);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    .containerBottom{
+        height: 40%;
+        width: 100%;
+        
+    }
+}
+

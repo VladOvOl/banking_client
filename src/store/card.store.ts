@@ -15,7 +15,7 @@ interface ICardStore{
 	getData: (userId:number)=>any
 }
 
-export const useCardStore = create<ICardStore>()(persist(devtools((set)=>({
+export const useCardStore = create<ICardStore>()(devtools((set)=>({
 	id:0,
 	setId:(i)=>set(()=>(
 		{id:i}
@@ -31,7 +31,8 @@ export const useCardStore = create<ICardStore>()(persist(devtools((set)=>({
 		cardDateMonth: 0,
 		cardDateYear: 0,
 		cardCVC: '0' ,
-		cardStatus:true 
+		cardStatus:true,
+		created_at:"" 
 	},
 
 	arrayCardStore:[],
@@ -50,7 +51,8 @@ export const useCardStore = create<ICardStore>()(persist(devtools((set)=>({
 		cardDateMonth: card.cardDateMonth,
 		cardDateYear: card.cardDateYear,
 		cardCVC: card.cardCVC,
-		cardStatus: card.cardStatus
+		cardStatus: card.cardStatus,
+		created_at: card.created_at
 	}})),
 
 	setArrayCardStore:(cards)=>set(()=>
@@ -65,4 +67,4 @@ export const useCardStore = create<ICardStore>()(persist(devtools((set)=>({
 		return response
 	}
 
-})),{name:"card.store",version:1})) 
+}))) 

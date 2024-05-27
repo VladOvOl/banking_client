@@ -41,3 +41,9 @@ export const useCardBlockDialogStore = create<IDialog>()(devtools((set)=>({
     setIsOpenState: (state) => set({isOpen:state})
 
 })))
+
+export const useCreatePaymentDialogStore = create<IDialog>()(devtools((set)=>({
+    isOpen:false,
+    setIsOpenState: (state) => set({isOpen:state})
+
+})))
