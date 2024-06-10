@@ -1,19 +1,34 @@
 .container{
+    height: 100%;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 15px;
+    padding: 1.5rem 0.5rem  1.5rem 1.5rem;
+}
+
+.containerScroll{
+    height: 93%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+
+.containerTop{
+    height: 7%;
+    //background-color: aqua;
+    font-size: 20px;
+    display: flex;
+
+}
+
+
+.containerList{
     width: 100%;
     height: fit-content;
-    padding: 1.5rem  1.5rem;
     display: flex;
     flex-direction: column;
     //background-color: bisque;
 }
 
-.containerScroll{
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    border: 1.5px solid #E5E7EB;
-    border-radius: 15px;
-}
 
 

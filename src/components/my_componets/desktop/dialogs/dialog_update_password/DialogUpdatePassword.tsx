@@ -16,7 +16,7 @@ import { useResetPasswordDialogStore } from "@/store/dialog.store"
 import { useState } from "react"
 
 
-export function DialogTest() {
+export function  DialogTest() {
 
   const { toast } = useToast()
   const [password,setPassword] = useState('')

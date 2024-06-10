@@ -1,34 +1,22 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import style from './MainChart.module.scss'
 import { useTransactionStore } from '@/store/transaction.store';
 import {DollarSign} from 'lucide-react'
 import { ITransaction } from '@/types/transaction.types';
 import { transactionUtilsService } from '@/services/transaction/transaction_utils.service';
+ 
 
 
 interface IProps {
-  period : string
+  arr : any,
+  total:number| false
 }
 
-const MainChart =({period}:IProps)=> {
+const MainChart =({arr,total}:IProps)=> {
 
-  const {allTransactionByUser} = useTransactionStore()
 
-  let arrayTransaction: ITransaction[];
-  let arr
-
-  if(period != "all"){
-    arrayTransaction = transactionUtilsService.filterObjectsByPeriod(allTransactionByUser,period)
-    arr = transactionUtilsService.calculateSums(arrayTransaction, period)
-  }else{
-    arrayTransaction=allTransactionByUser
-    arr = transactionUtilsService.calculateSums(arrayTransaction, period)
-  }
-
-  const total = arrayTransaction.length != 0 && 
-    transactionUtilsService.sumValues(arrayTransaction)
   
   return(
     <div className={style.container}>

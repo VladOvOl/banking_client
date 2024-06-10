@@ -20,14 +20,6 @@ const NavSettings = (props: Props) => {
           <Nav
             links={[
               {
-                title: "Settings",
-                href:"/dashboard/settings",
-                label: "",
-                icon:  Settings,
-                variant: "ghost",
-                
-              },
-              {
                 title: "LogOut",
                 href:"#",
                 label: "",
@@ -46,13 +38,6 @@ const NavSettings = (props: Props) => {
         <div className={style.containerCollapsed}>
           <NavCollapsed 
             links={[
-              {
-                title: "Settings",
-                href:"/dashboard/settings",
-                label: "",
-                icon:  Settings,
-                variant: "ghost",
-              },
               {
                 title: "LogOut",
                 href:"#",

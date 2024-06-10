@@ -6,7 +6,8 @@ export interface ITransaction{
     userRecipientFullName:string,
     userRecipientCardNumber:string,
     process: string,
-    createdAt: string
+    createdAt: string,
+    typeTransaction: "transfer"|"communal"|"internet"|"mobile"|"television"|"charity"|"games"|"tickets"
 }
 
 export interface ICreateTransaction{
@@ -16,4 +17,5 @@ export interface ICreateTransaction{
     userSenderCardMonth: string,
     userSenderCardYear: string,
     userSenderCardCVC: string,
+    typeTransaction: "transfer"|"communal"|"internet"|"mobile"|"television"|"charity"|"games"|"tickets"
 }

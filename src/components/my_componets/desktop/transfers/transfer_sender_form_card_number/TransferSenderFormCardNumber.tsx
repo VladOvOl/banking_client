@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/select"
 import style from './TransferSenderFormCardNumber.module.scss'
 import { useTransactionStore } from '@/store/transaction.store'
-import { utilsService } from '@/services/tools/utils.service'
 
 type Props = {}
 
@@ -54,7 +53,8 @@ function TransferSenderFormCardNumber({}: Props) {
                 userSenderCardMonth: currentTransactionForm.userSenderCardMonth,
                 userSenderCardYear: currentTransactionForm.userSenderCardYear,
                 userSenderCardCVC: currentTransactionForm.userSenderCardCVC,
-                value: currentTransactionForm.value
+                value: currentTransactionForm.value,
+                typeTransaction:'transfer'
               })}}
             />
           </div>
@@ -69,7 +69,8 @@ function TransferSenderFormCardNumber({}: Props) {
                 userSenderCardMonth: e.toString(),
                 userSenderCardYear: currentTransactionForm.userSenderCardYear,
                 userSenderCardCVC: currentTransactionForm.userSenderCardCVC,
-                value: currentTransactionForm.value
+                value: currentTransactionForm.value,
+                typeTransaction:'transfer'
               })}>
                 <SelectTrigger id="month">
                   <SelectValue placeholder="Month" />
@@ -100,7 +101,8 @@ function TransferSenderFormCardNumber({}: Props) {
                 userSenderCardMonth: currentTransactionForm.userSenderCardMonth,
                 userSenderCardYear: e.toString(),
                 userSenderCardCVC: currentTransactionForm.userSenderCardCVC,
-                value: currentTransactionForm.value
+                value: currentTransactionForm.value,
+                typeTransaction:'transfer'
               })}>
                 <SelectTrigger id="year">
                   <SelectValue placeholder="Year" />
@@ -128,7 +130,8 @@ function TransferSenderFormCardNumber({}: Props) {
                   userSenderCardMonth: currentTransactionForm.userSenderCardMonth,
                   userSenderCardYear: currentTransactionForm.userSenderCardYear,
                   userSenderCardCVC: e.target.value,
-                  value: currentTransactionForm.value
+                  value: currentTransactionForm.value,
+                  typeTransaction:'transfer'
                 })}
               />
             </div>

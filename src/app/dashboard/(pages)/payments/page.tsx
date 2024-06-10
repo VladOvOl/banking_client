@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './page.module.scss'
-import PaymentContainer from '@/components/my_componets/desktop/payment/payment_container/PaymentContainer'
+import PaymentContainer from '@/components/my_componets/desktop/containers/payment_container/PaymentContainer' 
 
 type Props = {}
 

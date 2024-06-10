@@ -1,0 +1,15 @@
+.left{
+    cursor: pointer;
+
+    &:hover{
+        scale: 1.1;
+    }
+}
+
+.right{
+    cursor: pointer;
+
+    &:hover{
+        scale: 1.1;
+    }
+}

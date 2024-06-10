@@ -1,8 +1,7 @@
 'use client'
 import React from 'react'
 import style from './PaymentBlock.module.scss'
-import { useCreatePaymentDialogStore } from '@/store/dialog.store'
-import { DialogPayment } from '../../dialogs/dialog_payment/DialogPayment'
+import { useCreatePaymentDialogStore } from '@/store/dialog.store' 
 import { useRouter } from 'next/navigation'
 import { usePaymentStore } from '@/store/payment.store'
 import { IPaymentBlocks } from '@/types/payment.types'
@@ -10,6 +9,7 @@ import { IPaymentBlocks } from '@/types/payment.types'
 type Props = {
   img:any,
   title:string,
+  type: string,
   paymentBlockInfo: IPaymentBlocks
 }
 
@@ -23,6 +23,7 @@ const PaymentBlock = ({img,title,paymentBlockInfo}: Props) => {
     if (title === "Transfers") {
       router.push('/dashboard/transfers');
     } else {
+      console.log(paymentBlockInfo)
       setCurrentPayments(paymentBlockInfo);
       setIsOpenState(true);
     }

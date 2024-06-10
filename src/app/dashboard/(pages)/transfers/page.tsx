@@ -1,4 +1,4 @@
-import TransferContainer from '@/components/my_componets/desktop/transfers/transfer_container/TransferContainer'
+import TransferContainer from '@/components/my_componets/desktop/containers/transfer_container/TransferContainer'
 import React from 'react'
 import style from './page.module.scss'
 

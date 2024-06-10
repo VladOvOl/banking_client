@@ -1,35 +1,47 @@
+import { ISummary } from '@/services/transaction/transaction_utils.service';
 import React from 'react'
-import { PieChart, Pie, Sector, Cell } from "recharts";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 
-const data = [
-  { name: "Group A", value: 1900 },
-  { name: "Group B", value: 500 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 }
-];
-const COLORS = ["#000", "#676767", "#9D9D9D", "#736464","#A3A3A3"];
 
-type Props = {}
+const COLORS = ['#000','#312927', '#2B2C31', '#554A4C','#47535F','#646770','#02122B','#868583'];
 
-const CircleChart = (props: Props) => {
+
+
+type Props = {
+  arr:ISummary[]
+}
+
+
+
+const CircleChartDashboard = ({arr}: Props) => {
+
+  
   return (
-    <PieChart width={150} height={150}>
-      <Pie
-        data={data}
-        //cx={120}
-        //cy={200}
-        innerRadius={55}
-        outerRadius={70}
-        fill="#8884d8"
-        paddingAngle={5}
-        dataKey="value"
-      >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-    </PieChart>
+    <ResponsiveContainer width={"100%"} height={"100%"}>
+      <PieChart>
+        <Pie
+          data={arr}
+          innerRadius={"70%"}
+          outerRadius={"90%"}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {arr.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <Tooltip />
+        <Legend 
+            layout="vertical" 
+            verticalAlign="middle" 
+            align="right"
+            formatter={(value, entry, index) => <span>{value}</span>} 
+        />
+      </PieChart>
+      
+    </ResponsiveContainer>
+
   )
 }
 
-export default CircleChart
+export default CircleChartDashboard

@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import style from './SideBar.module.scss'
 import NavSettings from "@/components/my_ui/nav_settings/NavSettings";
 import SideBarLogo from "@/components/my_ui/sidebar_logo/SideBarLogo";
-import NavSideBarMenu from "../nav_side_bar_menu/NavSideBarMenu";
+import NavSideBarMenu from "./nav_side_bar_menu/NavSideBarMenu";
 import { UserLabelAvatar } from "@/components/ui/user_label_avatar/user_label_avatar";
 
 

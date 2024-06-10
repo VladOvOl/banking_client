@@ -1,0 +1,34 @@
+.containerScroll{
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.container{
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 1.5rem;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 15px;
+
+    
+    @media (max-width:1056px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width:700px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width:550px) {
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+
+    @media (max-width:370px) {
+        grid-template-columns: repeat(1, 1fr);
+        
+    }
+}

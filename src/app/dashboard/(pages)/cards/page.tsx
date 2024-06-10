@@ -30,12 +30,12 @@ const CardsPage = (props: Props) => {
   async function add2(){
     try {
       await cardService.createCard(
-        {cardTitle:"Raif Bank",
-        cardUserFullName:"Vlad Ovsianik",
-        cardNumber: '0000000000000007',
+        {cardTitle:"OnlineBank",
+        cardUserFullName:"Roman Batkovich",
+        cardNumber: '7667000000002121',
         cardDateMonth: 12,
         cardDateYear: 24,
-        cardBalance: 100,
+        cardBalance: 500,
         cardStatus: true,
         cardUserPinCode:1234,
         cardCVC: 123,
@@ -43,7 +43,7 @@ const CardsPage = (props: Props) => {
     } catch (error) {
       
     }finally{
-     ()=>queryClient.invalidateQueries({queryKey:['data']})
+     ()=>queryClient.invalidateQueries({queryKey:['cards']})
     } 
   }
 
@@ -66,6 +66,9 @@ const decryptedMessage: string = CryptoJS.AES.decrypt(encryptedMessage, yourStri
       </button><br />
       
    */
+  /**      <button onClick={()=>add2()}>
+        createCard
+      </button> */
 
 
 
@@ -73,9 +76,7 @@ const decryptedMessage: string = CryptoJS.AES.decrypt(encryptedMessage, yourStri
    <div className={style.container}>
       <div className={style.containerTop}>
         <h1>Card Page</h1>
-        <button onClick={()=>add2()}>
-        createCard
-      </button>
+  
       </div>
       <div className={style.containerData}>
         <CarouselCard/>

@@ -87,8 +87,8 @@ export function FormAccount() {
     <div className="w-full ">
     <Card className="px-0">
       <CardHeader className="px-0 pt-0">
-        <CardTitle>Update account</CardTitle>
-        <CardDescription>Enter all string to create account</CardDescription>
+        <Label>Update account</Label>
+        <CardDescription>Enter all string to create done account</CardDescription>
       </CardHeader>
       <CardContent className="px-0">
         <form>
@@ -106,7 +106,7 @@ export function FormAccount() {
               <Label className="text-sm text-muted-foreground" 
                 htmlFor="name"
               >
-                Full Namedfvdfvdfdfcdfcdfcdfcdfcdfcdfc
+                All your information will be protected
               </Label>
             </div>
             <div className="flex flex-col space-y-1.5">
@@ -124,7 +124,7 @@ export function FormAccount() {
                 htmlFor="email"
                 className="text-sm text-muted-foreground"
               >
-                Emailsdgsdgsdgsddddddddddddddddddd
+                All your information will be protected
               </Label>
             </div>
             
@@ -143,7 +143,7 @@ export function FormAccount() {
                 htmlFor="phone"
                 className="text-sm text-muted-foreground"
               >
-                Phonesdfhdsfhsidhfsidu
+                All your information will be protected
               </Label>
             </div>
 
@@ -162,7 +162,7 @@ export function FormAccount() {
                 htmlFor="address"
                 className="text-sm text-muted-foreground"
               >
-                Phonesdfhdsfhsidhfsidu
+                All your information will be protected
               </Label>
             </div>
 

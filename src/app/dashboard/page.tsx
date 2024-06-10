@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './page.module.scss'
 import Container from '@/components/my_componets/desktop/containers/dashboard_container/Container'
-import Dashboard from '@/components/my_componets/desktop/dashboard/dashboard/Dashboard'
+import Dashboard from '@/components/my_componets/desktop/pages/dashboard/Dashboard'
 import DateTime from '@/components/my_componets/desktop/date_time/DateTime'
 
 

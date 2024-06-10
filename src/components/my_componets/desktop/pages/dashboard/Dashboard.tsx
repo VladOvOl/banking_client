@@ -1,8 +1,6 @@
 import React from 'react'
 import Container from '../../containers/dashboard_container/Container'
 import { Tabs, TabsList, TabsTrigger,TabsContent } from '@/components/ui/tabs'
-import DateSpan from '@/components/my_ui/date/Date'
-import Clock from '@/components/my_ui/clock/Clock'
 import style from './Dashboard.module.scss'
 
 type Props = {}
@@ -11,7 +9,7 @@ function Dashboard({}: Props) {
   return (
     <Tabs defaultValue="week" className="w-[100%] h-[100%]">
       <div className="h-[10%] flex items-center justify-between">
-        <TabsList className="flex w-fit">
+        <TabsList className="flex w-fit ">
           <TabsTrigger value="year">
             Year
           </TabsTrigger>

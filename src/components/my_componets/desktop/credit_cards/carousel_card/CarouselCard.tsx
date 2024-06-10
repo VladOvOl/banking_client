@@ -20,8 +20,7 @@ import { useCardBlockDialogStore, useTransferDialogStore } from "@/store/dialog.
 import DialogCardBlock from "../../dialogs/dialog_card_block/DialogCardBlock"
 import TransactionList from "../../transfers/transaction_list/TransactionList"
 import {useQueryClient } from "@tanstack/react-query"
-import { ICard } from "@/types/card.types"
-import { create } from "domain"
+import { ICard } from "@/types/card.types"   
 import { cardToolService } from "@/services/tools/cardTools.service"
 
 const NOCardCarcas = {
@@ -64,92 +63,94 @@ export function CarouselCard() {
     api.on("select", () => {
       setIdCard(api.selectedScrollSnap())
       setCurrent(api.selectedScrollSnap() + 1)
-      console.log(api.selectedScrollSnap() + 1)
-  
     })
   }, [api])
 
   return (
     <div className={style.container}>
       <div className={style.containerLeft}>
-        <Carousel 
-          setApi={setApi} 
-          className="w-full max-w-[400px]"
-        >
-          <CarouselContent>
-            {
-              arrayCardSort.length!=0 
-              ? arrayCardSort.map((obj, index) => (
-                <CarouselItem key={index}>
-                  <BankingCard card={obj}/>   
-                </CarouselItem>
-                ))
-              : <CarouselItem key={0}>
-                  <BankingNoCard/>
-                </CarouselItem>
-            } 
-          </CarouselContent>  
-          {
-            arrayCardSort.length!=0 &&
-            <>
-              <CarouselPrevious/>
-              <CarouselNext/>
-            </>
-          }
-        </Carousel>
-
-        <div className="text-center text-sm text-muted-foreground">
-          {
-            arrayCardSort.length!=0 
-            && `Slide ${current} of ${arrayCardSort.length}`
-          }
-        </div> 
-
-        <div className="w-full flex justify-between gap-[5%]">
-          <Button 
-            className='w-[50%]'
-            variant={"secondary"}
-            onClick={()=>setIsOpenState(true)}
-            disabled={
-              card && card.cardStatus
-              ?false
-              :true}
+        <div className={style.containerData}>
+          <Carousel 
+            setApi={setApi} 
+            className="w-full"
           >
-            <ArrowLeftRight className="mr-2 h-5 w-5"/> 
-            Transfer
-          </Button>
-          <Button 
-            className='w-[50%]'
-            variant={card && card.cardStatus
-              ?"secondary"
-              :"default"
-            }
-            onClick={()=>cardBlock.setIsOpenState(true)}
-          >
-            <CircleOffIcon className="mr-2 h-5 w-5"/>
-            {card && card.cardStatus
-              ?<p>Blok Card</p>
-              :<p>Un blok Card</p>
-            }
-          </Button>
-        </div>
+            <CarouselContent>
+              {
+                arrayCardSort.length!=0 
+                ? arrayCardSort.map((obj, index) => (
+                  <CarouselItem key={index} className="flex justify-center">
+                    <BankingCard card={obj}/>   
+                  </CarouselItem>
+                  ))
+                : <CarouselItem key={0}>
+                    <BankingNoCard/>
+                  </CarouselItem>
+              } 
+            </CarouselContent>  
+              {
+                arrayCardSort.length!=0 &&
+                <>
+                  <CarouselPrevious/>
+                  <CarouselNext/>
+                </>
+              }
+            </Carousel>
+
+            <div className="text-center text-sm text-muted-foreground">
+              {
+                arrayCardSort.length!=0 
+                && `Slide ${current} of ${arrayCardSort.length}`
+              }
+            </div> 
+
+            <div className="w-full flex justify-between gap-[5%]">
+              <Button 
+                className='w-[50%]'
+                variant={"secondary"}
+                onClick={()=>setIsOpenState(true)}
+                disabled={
+                  card && card.cardStatus
+                  ?false
+                  :true}
+              >
+                <ArrowLeftRight className="mr-2 h-5 w-5"/> 
+                Transfer
+              </Button>
+              
+              <Button 
+                className='w-[50%]'
+                variant={card && card.cardStatus
+                  ?"secondary"
+                  :"default"
+                  }
+                onClick={()=>cardBlock.setIsOpenState(true)}
+              >
+              <CircleOffIcon className="mr-2 h-5 w-5"/>
+              {card && card.cardStatus
+                ?<p>Blok Card</p>
+                :<p>Un blok Card</p>
+              }
+              </Button>
+            </div>
   
-          {
-            card && card.cardStatus
-            ?
-              <>
-                { 
-                arrayCardSort.length !== 0 
-                ? api &&
-                <BankingCardInfo 
-                  cardId={api.selectedScrollSnap()} 
-                  card={card}
-                />
-                : <BankingCardInfo cardId={0} card={NOCardCarcas}/>
-                }
-              </>
-            : <p>Card block</p>
-          }  
+            {
+              card && card.cardStatus
+              ?
+                <>
+                  { 
+                  arrayCardSort.length !== 0 
+                  ? api &&
+                  <BankingCardInfo 
+                    cardId={api.selectedScrollSnap()} 
+                    card={card}
+                  />
+                  : <BankingCardInfo cardId={0} card={NOCardCarcas}/>
+                  }
+                </>
+              : <p>Card block</p>
+            }  
+          </div>
+        
         </div>
 
         <div className={style.containerRight}>

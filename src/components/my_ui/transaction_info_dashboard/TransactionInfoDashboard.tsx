@@ -47,8 +47,8 @@ function TransactionInfoDashboard({card}: Props) {
           </p>
           <p className={style.card}>
             {card.process !== "+"
-            ? card.userRecipientCardNumber
-            : card.userSenderCardNumber}
+            ? cardToolService.maskCreditCardNumber(card.userRecipientCardNumber)
+            : cardToolService.maskCreditCardNumber(card.userSenderCardNumber)}
           </p>
         </div>
       </div>
@@ -75,8 +75,8 @@ function TransactionInfoDashboard({card}: Props) {
           </p>
           <p className={style.card}>
           {card.process !== "+"
-            ? card.userSenderCardNumber
-            : card.userRecipientCardNumber}
+            ? cardToolService.maskCreditCardNumber(card.userSenderCardNumber)
+            : cardToolService.maskCreditCardNumber(card.userRecipientCardNumber)}
           </p>
         </div>
       </div>

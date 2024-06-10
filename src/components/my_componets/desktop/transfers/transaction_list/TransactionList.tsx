@@ -6,8 +6,7 @@ import { ITransaction } from '@/types/transaction.types'
 import { transactionService } from '@/services/transaction/transaction.service'
 import { useQuery } from '@tanstack/react-query'
 import { Separator } from '@/components/ui/separator'
-import { useTransactionByCard } from '@/hooks/api/useTransactionByCard'
-import { useTransactionStore } from '@/store/transaction.store'
+
 
 type Props = {
   cardId:string,
@@ -30,21 +29,25 @@ function TransactionList({cardId}: Props) {
   const array = [...transaction].reverse()
  
   return (
-    <div className={style.containerScroll}>
-      <div className={style.container}>
-      {
-        query.isFetching
-        ?<p>Loading...</p>
-        :
-        transaction.length == 0 
-        ?<p>No yet transactions</p>
-        : array.map((card)=>(
-          <div key={card.id}>
-            <TransactionInfo card={card}/>
-            <Separator className='my-3'/>
-          </div>
-        ))
-      }
+    <div className={style.container}>  
+      <div className={style.containerTop}>
+        <p>Transaction</p>
+      </div>
+      <div className={style.containerScroll}>
+        <div className={style.containerList}>
+        {
+          query.isFetching
+            ?<p>Loading...</p>
+            : transaction.length == 0 
+                ?<p>No yet transactions</p>
+                : array.map((card)=>(
+                  <div key={card.id}>
+                    <TransactionInfo card={card}/>
+                    <Separator className='my-3'/>
+                  </div>
+                ))
+        }
+        </div>
       </div>
     </div>
     

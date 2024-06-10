@@ -17,7 +17,7 @@ const SideBarLogo = (props: Props) => {
             fill
           />
         </div>
-        <p>NeoBank</p>
+        <p>OnlineBank</p>
       </div>
   )
 }

@@ -17,7 +17,8 @@ export const useTransactionStore = create<ITransactionStore>()((set)=>({
         userSenderCardMonth:'',
         userSenderCardYear: '',
         userSenderCardCVC:'',
-        value: 0
+        value: 0,
+        typeTransaction:"transfer",
     },
 
     allTransactionByUser:[],
@@ -33,7 +34,8 @@ export const useTransactionStore = create<ITransactionStore>()((set)=>({
             userSenderCardMonth:'',
             userSenderCardYear: '',
             userSenderCardCVC:'',
-            value: 0
+            value: 0,
+            typeTransaction:"transfer"
         }
     })),
 
@@ -44,7 +46,8 @@ export const useTransactionStore = create<ITransactionStore>()((set)=>({
             userSenderCardMonth: dto.userSenderCardMonth,
             userSenderCardYear: dto.userSenderCardYear,
             userSenderCardCVC: dto.userSenderCardCVC,
-            value: dto.value
+            value: dto.value,
+            typeTransaction: dto.typeTransaction
         }
     }))
     }))

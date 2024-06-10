@@ -43,7 +43,8 @@ function TransferRecipientFormCardNumber({}: Props) {
                 userSenderCardMonth: currentTransactionForm.userSenderCardMonth,
                 userSenderCardYear: currentTransactionForm.userSenderCardYear,
                 userSenderCardCVC: currentTransactionForm.userSenderCardCVC,
-                value: currentTransactionForm.value
+                value: currentTransactionForm.value,
+                typeTransaction:'transfer'
               })}}
             />
           </div>
@@ -62,7 +63,8 @@ function TransferRecipientFormCardNumber({}: Props) {
                   userSenderCardMonth: currentTransactionForm.userSenderCardMonth,
                   userSenderCardYear: currentTransactionForm.userSenderCardYear,
                   userSenderCardCVC: currentTransactionForm.userSenderCardCVC,
-                  value: +e.target.value
+                  value: +e.target.value,
+                  typeTransaction:'transfer'
                 })}}
               />
             </div>

@@ -1,16 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import style from './TransactionList.module.scss'
-import TransactionInfo from '@/components/my_ui/transaction_info/TransactionInfo'
 import { ITransaction } from '@/types/transaction.types'
-import { transactionService } from '@/services/transaction/transaction.service'
-import { QueryClient, useQuery } from '@tanstack/react-query'
 import { Separator } from '@/components/ui/separator'
-import { useTransactionByCard } from '@/hooks/api/useTransactionByCard'
 import TransactionInfoDashboard from '@/components/my_ui/transaction_info_dashboard/TransactionInfoDashboard'
 import { useCardStore } from '@/store/card.store'
 import { useTransactionStore } from '@/store/transaction.store'
-import { dateAndTimeService } from '@/services/tools/dateAndTime.service'
 import { transactionUtilsService } from '@/services/transaction/transaction_utils.service'
 
 type Props = {
@@ -30,7 +25,7 @@ function TransactionListDashboard({cardId,period}: Props) {
     arr = allTransactionByUser
   }else{
     arr = period 
-      ? transactionUtilsService.filterObjectsByPeriod(allTransactionByUser,period)
+      ? transactionUtilsService.filterObjectsByPeriod(allTransactionByUser,period,0)
       :[]
   }
     

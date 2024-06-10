@@ -1,6 +1,5 @@
 'use client'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cardToolService } from '@/services/tools/cardTools.service'
@@ -34,7 +33,8 @@ function TransferSenderFormCard({}: Props) {
                 userSenderCardMonth: e.cardDateMonth.toString(),
                 userSenderCardYear: e.cardDateYear.toString(),
                 userSenderCardCVC: utilsService.decrypt(e.cardCVC.toString(),e.id),
-                value: currentTransactionForm.value
+                value: currentTransactionForm.value,
+                typeTransaction:'transfer'
               })}>
             <SelectTrigger id="card">
               <SelectValue placeholder="Choose your card" />

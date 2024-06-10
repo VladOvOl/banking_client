@@ -18,8 +18,7 @@ import { authService } from "@/services/auth/auth.service"
 import { useUserStore } from "@/store/user.store"
 import { useLoadingStore } from "@/store/loading.store"
 import { ILoginRequest } from "@/types/auth.types"
-import { cardService } from "@/services/card/card.service"
-import { useCardStore } from "@/store/card.store"
+
 
 
 export function FormLogin() {
@@ -27,7 +26,6 @@ export function FormLogin() {
   const router = useRouter()
   const { toast } = useToast()
   const {setUserStore,userStore} = useUserStore()
-  const {setArrayCardStore} = useCardStore()
   const {isLoading,setLoadingState} = useLoadingStore()
 
   const[showPassword, setShowPassword] = useState(false)

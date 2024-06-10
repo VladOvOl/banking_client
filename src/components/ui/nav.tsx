@@ -33,7 +33,7 @@ export function Nav({ links}: NavProps) {
   return (
     <TooltipProvider>
      
-        <nav className="grid gap-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]">
+        <nav className="grid gap-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]] items-center">
           {links.map((link, index) =>
               <Link
                 key={index}
@@ -47,7 +47,9 @@ export function Nav({ links}: NavProps) {
                 )}
               >
                 <link.icon className="mr-2 h-5 w-5" />
-                {link.title}
+                  <span className="text-[1rem]">
+                    {link.title}
+                  </span>
                 {link.label && (
                   <span
                     className={cn(

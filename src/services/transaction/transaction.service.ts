@@ -1,4 +1,5 @@
 import { axiosWithAuth } from "@/api/interceptors";
+import { ICreatePaymentForm } from "@/types/payment.types";
 import { ICreateTransaction } from "@/types/transaction.types";
 
 export const transactionService = {
@@ -25,5 +26,16 @@ export const transactionService = {
         ...data
       })
       return response
+  },
+
+  async createPayment(data: ICreatePaymentForm){
+    const response = await axiosWithAuth.post("/transaction/createPayment",
+      {
+        ...data
+      }
+    )
+    return response
   }
+
+
 }

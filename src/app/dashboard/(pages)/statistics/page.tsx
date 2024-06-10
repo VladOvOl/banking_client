@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './page.module.scss'
-import StatisticContainer from '@/components/my_componets/desktop/containers/statistic_container/StatisticContainer'
+import Statistic from '@/components/my_componets/desktop/pages/statistic/Statistic'
 
 type Props = {}
 
@@ -11,7 +11,7 @@ function Statistics({}: Props) {
       <h1>Statistics</h1>
     </div>
     <div className={style.containerData}>
-      <StatisticContainer/>
+      <Statistic/>
     </div>
       
   </div>
