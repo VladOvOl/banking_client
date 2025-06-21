@@ -139,6 +139,7 @@ export function DialogPayment() {
               <Label htmlFor="card">
                 Choose your credit card number
               </Label>
+              //@ts-ignore
               <Select onValueChange={(e: ICard)=> onChooseSelectCard(e)} >
                 <SelectTrigger id="card">
                   <SelectValue placeholder= 'Choose your card' />
@@ -146,6 +147,7 @@ export function DialogPayment() {
                 <SelectContent>
                   {
                     arrayCard.map((obj,key)=>(
+                    //@ts-ignore
                     <SelectItem value={obj} key={key}>
                         {cardToolService.maskCreditCardNumber(obj.cardNumber)}
                     </SelectItem>
@@ -160,6 +162,7 @@ export function DialogPayment() {
                 <Label htmlFor="d">
                     Choose category
                 </Label>
+                //@ts-ignore
                 <Select onValueChange={(e: IUnderPaymentBlocks) => onChooseSelectCategory(e)}>
                   <SelectTrigger id="d">
                     <SelectValue placeholder="Choose your category" />
@@ -167,6 +170,7 @@ export function DialogPayment() {
                   <SelectContent>
                     {
                       currentPayments.underPaymentBlocks.map((obj,key)=>(
+                      //@ts-ignore
                       <SelectItem value={obj} key={key}>
                         {obj.title}
                       </SelectItem>
