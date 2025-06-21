@@ -140,7 +140,7 @@ export function DialogPayment() {
                 Choose your credit card number
               </Label>
               //@ts-ignore
-              <Select onValueChange={(e: ICard)=> onChooseSelectCard(e)} >
+              <Select onValueChange={(e: any)=> onChooseSelectCard(e)} >
                 <SelectTrigger id="card">
                   <SelectValue placeholder= 'Choose your card' />
                 </SelectTrigger>
