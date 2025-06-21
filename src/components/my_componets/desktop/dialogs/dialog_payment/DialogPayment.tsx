@@ -140,6 +140,7 @@ export function DialogPayment() {
                 Choose your credit card number
               </Label>
               //@ts-ignore
+              //(e: ICard)
               <Select onValueChange={(e: any)=> onChooseSelectCard(e)} >
                 <SelectTrigger id="card">
                   <SelectValue placeholder= 'Choose your card' />
@@ -163,7 +164,8 @@ export function DialogPayment() {
                     Choose category
                 </Label>
                 //@ts-ignore
-                <Select onValueChange={(e: IUnderPaymentBlocks) => onChooseSelectCategory(e)}>
+                //IUnderPaymentBlocks
+                <Select onValueChange={(e: any) => onChooseSelectCategory(e)}>
                   <SelectTrigger id="d">
                     <SelectValue placeholder="Choose your category" />
                   </SelectTrigger>
