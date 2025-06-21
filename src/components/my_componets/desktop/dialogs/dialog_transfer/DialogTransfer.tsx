@@ -35,6 +35,7 @@ function DialogTransfer({card}: Props) {
   const {isOpen,setIsOpenState} = useTransferDialogStore()
 
   useEffect(()=>{
+    //@ts-ignore
     setCurrentTransactionForm({
       userSenderCardNumber: card.cardNumber,
       userRecipientCardNumber: currentTransactionForm.userRecipientCardNumber,
@@ -101,6 +102,7 @@ function DialogTransfer({card}: Props) {
               className="w-full]"
               value={currentTransactionForm.userRecipientCardNumber}
               maxLength={16}
+              //@ts-ignore
               onChange={(e)=>{setCurrentTransactionForm({
                 userSenderCardNumber: currentTransactionForm.userSenderCardNumber,
                 userRecipientCardNumber: e.target.value,
@@ -120,6 +122,7 @@ function DialogTransfer({card}: Props) {
               id="card"
               className="w-[50%]"
               value={currentTransactionForm.value}
+              //@ts-ignore
               onChange={(e)=>{setCurrentTransactionForm({
                 userSenderCardNumber: currentTransactionForm.userSenderCardNumber,
                 userRecipientCardNumber: currentTransactionForm.userRecipientCardNumber,
