@@ -27,28 +27,31 @@ function TransferSenderFormCard({}: Props) {
     <CardContent className="grid gap-6">
         <div className="grid gap-2">
           <Label htmlFor="card">Your card number</Label>
-          <Select onValueChange={(e:ICard)=>setCurrentTransactionForm({
-                userSenderCardNumber: e.cardNumber,
-                userRecipientCardNumber: currentTransactionForm.userRecipientCardNumber,
-                userSenderCardMonth: e.cardDateMonth.toString(),
-                userSenderCardYear: e.cardDateYear.toString(),
-                userSenderCardCVC: utilsService.decrypt(e.cardCVC.toString(),e.id),
-                value: currentTransactionForm.value,
-                typeTransaction:'transfer'
-              })}>
-            <SelectTrigger id="card">
-              <SelectValue placeholder="Choose your card" />
-            </SelectTrigger>
-            <SelectContent>
-              {
-                arrayCardStore.map((obj,key)=>(
-                  <SelectItem value={obj} key={key}>
-                    {cardToolService.maskCreditCardNumber(obj.cardNumber)}
-                  </SelectItem>
-                ))
-              }
-            </SelectContent>
-          </Select>
+            {   //@ts-ignore
+                <Select onValueChange={(e:ICard)=>setCurrentTransactionForm({
+                    userSenderCardNumber: e.cardNumber,
+                    userRecipientCardNumber: currentTransactionForm.userRecipientCardNumber,
+                    userSenderCardMonth: e.cardDateMonth.toString(),
+                    userSenderCardYear: e.cardDateYear.toString(),
+                    userSenderCardCVC: utilsService.decrypt(e.cardCVC.toString(),e.id),
+                    value: currentTransactionForm.value,
+                    typeTransaction:'transfer'
+                })}>
+                    <SelectTrigger id="card">
+                        <SelectValue placeholder="Choose your card" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {
+                            arrayCardStore.map((obj,key)=>(
+                                //@ts-ignore
+                                <SelectItem value={obj} key={key}>
+                                    {cardToolService.maskCreditCardNumber(obj.cardNumber)}
+                                </SelectItem>
+                            ))
+                        }
+                    </SelectContent>
+                </Select>
+            }
         </div>
     </CardContent>
   </Card>
