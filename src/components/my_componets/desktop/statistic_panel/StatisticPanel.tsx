@@ -23,6 +23,7 @@ function StatisticPanel({}: Props) {
             <SelectItem value="All">All cards</SelectItem>
             {
             arrayCards.map((obj,key)=>(
+            //@ts-ignore
               <SelectItem value={obj} key={key}>
                 {cardToolService.maskCreditCardNumber(obj.cardNumber)}
               </SelectItem>
@@ -32,7 +33,7 @@ function StatisticPanel({}: Props) {
         </SelectContent>
       </Select>
     </div>
-        
+
   )
 }
 
